@@ -12,32 +12,38 @@ class AvengersPriorityQueue:
     def enqueue(self,mission):
         node = AvengersPriorityQueue.Node(mission,None)
 
-        if mission._priority == 1:
+        if self.__count == 0:
             self.__head = node
-            self.__tail = node
-            self.__count += 1
+        else:
+            self.__tail.prev = node
 
-        if mission._priority == 2 and self.__tail == None:
-            self.__tail.data = node
-            self.__count += 1
+        self.__tail = node
+        self.__count += 1
 
-        if mission._priority == 2 and self.__tail != None:
-            self.__head.data = node
-            self.__head.prev = node
-            self.__count += 1
 
-        if mission._priority == 3:
-            self.__tail.data = node
-            self.__head.prev = node
-            self.__count += 1
+    def __bubble_sort(self):
+        if self.__head is None:return
+
+        for i in range(self.__count):
+            pass
+
+
+
+
 
 
     def dequeue(self):
-        if self.__count == 0: return "Элементов нет"
+        if self.__count == 0:
+            raise Exception("Exception type: queue is empty")
+
         data = self.__head.data
         self.__head = self.__head.prev
+
         self.__count -= 1
-        if self.__count == 0: self.__tail = None
+
+        if self.__count == 0:
+            self.__tail = None
+
         return data
 
     def peek(self):
@@ -49,22 +55,33 @@ class AvengersPriorityQueue:
     def get_count(self):
         return self.__count
 
-    class AvengersMission:
-        def __init__(self, description,priority = 3):
-            self._description = description
-            self._priority = priority
+class AvengersMission:
+    def __init__(self, description,priority = 3):
+        self._description = description
+        self._priority = priority
+
+
+    def __str__(self):
+        return f"Description: {self._description}, ID: {self._priority}"
 
 
 c1 = AvengersPriorityQueue()
-mission = AvengersPriorityQueue.AvengersMission('1213214',1)
-c1.enqueue(mission)
-mission = AvengersPriorityQueue.AvengersMission('1213214',3)
-c1.enqueue(mission)
-print(c1.peek())
+mission1 = AvengersMission('A',2)
+mission2 = AvengersMission('B',1)
+mission3 = AvengersMission('C',3)
+
+c1.enqueue(mission1)
+print('Enqueue: ', mission1)
+
+c1.enqueue(mission2)
+print('Enqueue: ', mission2)
+
+c1.enqueue(mission3)
+print('Enqueue: ', mission3)
+
+
 print(c1.dequeue())
-print(c1.peek)
 print(c1.dequeue())
-print(c1.peek())
 print(c1.dequeue())
 
 
