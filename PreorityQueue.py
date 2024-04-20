@@ -22,7 +22,7 @@ class AvengersPriorityQueue:
         pass
 
     def get_count(self):
-        pass
+        return self.__count
 
     class AvengersMission:
         def __init__(self, description, preority = 3):
