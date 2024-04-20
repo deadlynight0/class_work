@@ -10,13 +10,31 @@ class AvengersPriorityQueue:
             self.prev = prev
 
     def enqueue(self,mission):
-        pass
+        node = AvengersPriorityQueue.Node(mission,None)
+
+        if mission._priority == 1:
+            self.__head = node
+            self.__tail = node
+            self.__count += 1
+
+        if mission._priority == 2 and self.__tail == None:
+            self.__tail = node
+            self.__count += 1
+
+        if mission._priority == 2 and self.__tail != None:
+            self.__head._prev = node
+            self.__count += 1
+
+        if mission._priority == 3:
+            self.__tail = node
+            self.__count += 1
+
 
     def dequeue(self):
         pass
 
     def peek(self):
-        return self.__head.data if self.__head != 0 else None
+        return self.__head if self.__head != 0 else None
 
     def is_empty(self):
         return self.__count == 0
@@ -25,8 +43,13 @@ class AvengersPriorityQueue:
         return self.__count
 
     class AvengersMission:
-        def __init__(self, description, preority = 3):
-            self.__description = description
-            self.__preority = preority
+        def __init__(self, description,priority = 3):
+            self._description = description
+            self._priority = priority
 
 
+c1 = AvengersPriorityQueue()
+mission = AvengersPriorityQueue.AvengersMission('1213214',1)
+print(c1.enqueue(mission))
+mission = AvengersPriorityQueue.AvengersMission('1213214',2)
+print(c1.peek())
