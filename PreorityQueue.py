@@ -9,9 +9,24 @@ class AvengersPriorityQueue:
             self.data = data
             self.prev = prev
 
-class AvengersMission:
-    def __init__(self, description, preority = 3):
-        self.__description = description
-        self.__preority = preority
+    def enqueue(self,mission):
+        pass
+
+    def dequeue(self):
+        pass
+
+    def peek(self):
+        pass
+
+    def is_empty(self):
+        pass
+
+    def get_count(self):
+        pass
+
+    class AvengersMission:
+        def __init__(self, description, preority = 3):
+            self.__description = description
+            self.__preority = preority
 
 
