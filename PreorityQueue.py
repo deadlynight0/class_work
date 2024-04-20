@@ -16,7 +16,7 @@ class AvengersPriorityQueue:
         pass
 
     def peek(self):
-        pass
+        return self.__head.data if self.__head != 0 else None
 
     def is_empty(self):
         return self.__count == 0
