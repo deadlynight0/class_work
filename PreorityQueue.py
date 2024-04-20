@@ -19,7 +19,7 @@ class AvengersPriorityQueue:
         pass
 
     def is_empty(self):
-        pass
+        return self.__count == 0
 
     def get_count(self):
         return self.__count
